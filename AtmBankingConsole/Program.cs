@@ -1,6 +1,9 @@
 ﻿using System.Text;
 using System.Text.Json;
 using AtmBankingConsole;
+using AtmBankingConsole.Models;
+using TestPrsApi;
+using static System.Net.WebRequestMethods;
 
 const string baseurl = "http://localhost:1111";
 
@@ -11,6 +14,34 @@ JsonSerializerOptions joptions = new JsonSerializerOptions()
     WriteIndented = true
 };
 
+var cardCode; //readline here
+var pinCode; // readline here
+HttpClient http = new HttpClient();
+
+var jsonresponse = await LoginAsync(http, joptions, cardCode, pinCode);
+var customers = jsonresponse.DataReturned as Customer;
+
+async Task<JsonResponse> LoginAsnyc(HttpClient Http, JsonSerializerOptions joption, int cardCode, int pinCode)
+{
+    HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Get, $"{baseurl}/");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 /*
 $ Enter Card Code : 1234<enter>
@@ -23,7 +54,7 @@ Then there should be a menu showing the customer what the options are for the AT
 * Transfer
 * Show Transactions
 
-*/
+
 
 HttpClient http = new HttpClient();
 
@@ -47,6 +78,6 @@ var pinCode = Console.ReadLine();
 
 
 
-
+*/
 
 
